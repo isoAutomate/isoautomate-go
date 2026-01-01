@@ -1,0 +1,33 @@
+# --- Go Binaries & Build Artifacts ---
+/bin/
+/dist/
+*.exe
+*.test
+*.prof
+*.dll
+*.so
+*.dylib
+
+# --- Modules & Vendor ---
+vendor/
+# We usually commit go.sum, but if you prefer not to:
+# go.sum
+
+# --- IDE Settings ---
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# --- Secrets (CRITICAL) ---
+.env
+
+# --- isoAutomate Artifacts ---
+# Do not commit session recordings or failure screenshots
+screenshots/
+cookies.json
+*.png
+*.jpg
+*.pdf
+*.html
+source.html
