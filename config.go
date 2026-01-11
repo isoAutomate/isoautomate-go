@@ -1,29 +1,24 @@
 package isoautomate
 
-import (
-	"os"
-	"path/filepath"
-)
+import "os"
 
-// Redis Protocol Constants
+// Constants defining the Protocol
 const (
 	RedisPrefix      = "ISOAUTOMATE:"
 	WorkersSet       = RedisPrefix + "workers"
-	DefaultRedisHost = "localhost"
-	DefaultRedisPort = "6379"
-	DefaultRedisDB   = "0"
-)
-
-// File Paths (defaults)
-var (
 	ScreenshotFolder = "screenshots"
-	AssertionFolder  = filepath.Join(ScreenshotFolder, "failures")
 )
 
-// getEnv is a helper to read env vars with a default fallback
-func getEnv(key, fallback string) string {
-	if value, exists := os.LookupEnv(key); exists {
-		return value
-	}
-	return fallback
+// AssertionFolder is determined at runtime
+var AssertionFolder = ScreenshotFolder + string(os.PathSeparator) + "failures"
+
+// Config holds the connection details
+type Config struct {
+	RedisURL      string
+	RedisHost     string
+	RedisPort     string
+	RedisPassword string
+	RedisDB       int
+	RedisSSL      bool
+	EnvFile       string // Custom path to .env file
 }
